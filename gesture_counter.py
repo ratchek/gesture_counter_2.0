@@ -1,7 +1,7 @@
 # from
 # https://livecodestream.dev/post/detecting-face-features-with-python/
 ## TODO: Clean up code.
-## TODO: Add a nicer interface. Delete blinking black screen
+## TODO: Add a nicer interface. 
 ## TODO: For now the detector assumes that your head is such that your eyes are approximately parrallel to the bottom of the frame
 ## because it only measures the x distance when detecting shakes and the y distance when detecting nods.
 ## A good update would be to take the cartesian distance instead which should be simple to implement.
@@ -120,16 +120,17 @@ while True:
     total_refresh_rate -= 1
     if total_refresh_rate <= 0:
         total_refresh_rate = TOTAL_REFRESH_RATE
-        cv2.rectangle( frame, (0,0),  (640,480),  (0,0,0),  -1)
+        # # Calibration help
+        # cv2.rectangle( frame, (0,0),  (640,480),  (0,0,0),  -1)
         total_horizontal_change = 0
         total_vertical_change = 0
 
-    cv2.putText(frame,'Dziesiatki: %d'%(counter//10),(50,150), font, 1.2,(0,0,255),3)
-    cv2.putText(frame,'Paciorki: %d'%(counter%10),(50,200), font, 1.2,(0,0,255),3)
+    cv2.putText(frame,'Dziesiatki: %d'%(counter//10),(50,50), font, 1.2,(0,0,255),3)
+    cv2.putText(frame,'Paciorki: %d'%(counter%10),(50,100), font, 1.2,(0,0,255),3)
 
-
-    cv2.putText(frame, "Horizontal change = %d"%(total_horizontal_change),  (50,50), font, 0.75 , (0, 255, 0) , 1)
-    cv2.putText(frame, "Vertical change = %d"%(total_vertical_change),  (50,100), font, 0.75 , (0, 255, 0) , 1)
+    # # Calibration help
+    # cv2.putText(frame, "Horizontal change = %d"%(total_horizontal_change),  (50,150), font, 0.75 , (0, 255, 0) , 1)
+    # cv2.putText(frame, "Vertical change = %d"%(total_vertical_change),  (50,200), font, 0.75 , (0, 255, 0) , 1)
     # show the image
     cv2.imshow(winname="Face", mat=frame)
 
